@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhD Application Tracker</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PhD Application Tracker</p>
+          <h1>每日申请推进记录</h1>
+        </div>
+        <div class="date-box">
+          <label for="entryDate">日期</label>
+          <input id="entryDate" type="date" />
+        </div>
+      </header>
+
+      <section class="summary-grid" aria-label="今日概览">
+        <article class="metric research">
+          <span>今日阅读</span>
+          <strong id="metricArticles">0</strong>
+          <small>篇文章</small>
+        </article>
+        <article class="metric english">
+          <span>英语学习</span>
+          <strong id="metricEnglish">0</strong>
+          <small>分钟</small>
+        </article>
+        <article class="metric outreach">
+          <span>今日套磁</span>
+          <strong id="metricProfessors">0</strong>
+          <small>位老师</small>
+        </article>
+        <article class="metric focus">
+          <span>完成度</span>
+          <strong id="metricScore">0%</strong>
+          <small>基于三个方向</small>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <form id="trackerForm" class="tracker-form">
+          <section class="panel panel-research">
+            <div class="panel-heading">
+              <div>
+                <p>Research</p>
+                <h2>科研阅读</h2>
+              </div>
+              <span class="tag">文章 + 收获</span>
+            </div>
+            <div class="field-row">
+              <label>
+                文章数量
+                <input id="articleCount" type="number" min="0" step="1" placeholder="例如 3" />
+              </label>
+              <label>
+                阅读时长
+                <input id="researchMinutes" type="number" min="0" step="5" placeholder="分钟" />
+              </label>
+            </div>
+            <label>
+              文章标题 / 关键词
+              <textarea id="articleTitles" rows="4" placeholder="每行一篇，例如：Aaker 1997 brand personality"></textarea>
+            </label>
+            <label>
+              今日收获
+              <textarea id="researchTakeaways" rows="5" placeholder="写下理论、方法、变量、可借鉴表述，或一个你想继续追的问题"></textarea>
+            </label>
+          </section>
+
+          <section class="panel panel-english">
+            <div class="panel-heading">
+              <div>
+                <p>English</p>
+                <h2>英语学习</h2>
+              </div>
+              <span class="tag">时长 + 内容</span>
+            </div>
+            <div class="field-row">
+              <label>
+                学习时长
+                <input id="englishMinutes" type="number" min="0" step="5" placeholder="分钟" />
+              </label>
+              <label>
+                学习类型
+                <select id="englishType">
+                  <option value="">选择类型</option>
+                  <option>听力</option>
+                  <option>口语</option>
+                  <option>阅读</option>
+                  <option>写作</option>
+                  <option>词汇</option>
+                  <option>考试训练</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              学习内容
+              <textarea id="englishContent" rows="5" placeholder="例如：精听 30 分钟；整理 12 个 academic phrases；改一段 SOP"></textarea>
+            </label>
+            <label>
+              新表达 / 错题 / 下次要复习
+              <textarea id="englishNotes" rows="4" placeholder="保留一点可复用的东西，比单纯记录时长更有价值"></textarea>
+            </label>
+          </section>
+
+          <section class="panel panel-outreach">
+            <div class="panel-heading">
+              <div>
+                <p>Application</p>
+                <h2>套磁与申请</h2>
+              </div>
+              <span class="tag">老师 + 进展</span>
+            </div>
+            <div class="field-row">
+              <label>
+                套磁老师数量
+                <input id="professorCount" type="number" min="0" step="1" placeholder="例如 2" />
+              </label>
+              <label>
+                申请任务进度
+                <select id="applicationStage">
+                  <option value="">选择进展</option>
+                  <option>查项目</option>
+                  <option>筛导师</option>
+                  <option>写套磁</option>
+                  <option>已发送</option>
+                  <option>跟进回复</option>
+                  <option>文书修改</option>
+                  <option>网申材料</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              老师 / 学校 / 方向
+              <textarea id="professorList" rows="5" placeholder="每行一位老师：姓名 - 学校 - 研究方向 - 是否发送"></textarea>
+            </label>
+            <label>
+              申请推进备注
+              <textarea id="applicationNotes" rows="4" placeholder="例如：发现一个匹配导师；重写了套磁邮件开头；准备明天跟进"></textarea>
+            </label>
+          </section>
+
+          <section class="panel reflection-panel">
+            <div class="panel-heading">
+              <div>
+                <p>Review</p>
+                <h2>今日复盘</h2>
+              </div>
+              <span class="tag">一句话也可以</span>
+            </div>
+            <div class="field-row three">
+              <label>
+                专注度
+                <input id="focusScore" type="range" min="1" max="5" value="3" />
+                <span id="focusLabel" class="range-value">3 / 5</span>
+              </label>
+              <label>
+                情绪状态
+                <select id="mood">
+                  <option>平稳</option>
+                  <option>焦虑</option>
+                  <option>疲惫</option>
+                  <option>有动力</option>
+                  <option>很满意</option>
+                </select>
+              </label>
+              <label>
+                明日优先级
+                <select id="tomorrowPriority">
+                  <option>科研</option>
+                  <option>英语</option>
+                  <option>申请</option>
+                  <option>均衡推进</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              今日最大收获
+              <textarea id="dailyWin" rows="3" placeholder="今天最值得保留的一件事"></textarea>
+            </label>
+            <label>
+              明天最重要的一步
+              <textarea id="nextStep" rows="3" placeholder="让明天从一件明确的小事开始"></textarea>
+            </label>
+          </section>
+
+          <div class="actions">
+            <button type="submit" class="primary-button">保存今日记录</button>
+            <button type="button" id="clearDayButton" class="secondary-button">清空当天</button>
+            <button type="button" id="exportButton" class="secondary-button">导出 JSON</button>
+            <label class="import-button">
+              导入 JSON
+              <input id="importInput" type="file" accept="application/json,.json" />
+            </label>
+          </div>
+        </form>
+
+        <aside class="history-panel">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p>Week</p>
+                <h2>近 7 天统计</h2>
+              </div>
+            </div>
+            <div class="weekly-bars">
+              <div>
+                <span>文章</span>
+                <strong id="weekArticles">0 篇</strong>
+                <div class="bar"><i id="articleBar"></i></div>
+              </div>
+              <div>
+                <span>英语</span>
+                <strong id="weekEnglish">0 分钟</strong>
+                <div class="bar"><i id="englishBar"></i></div>
+              </div>
+              <div>
+                <span>套磁</span>
+                <strong id="weekProfessors">0 位</strong>
+                <div class="bar"><i id="professorBar"></i></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p>Log</p>
+                <h2>历史记录</h2>
+              </div>
+              <button type="button" id="deleteAllButton" class="text-button">全部删除</button>
+            </div>
+            <div id="historyList" class="history-list"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
