@@ -12,7 +12,7 @@
 
 ## 在线使用
 
-GitHub Pages 地址通常是：
+GitHub Pages 地址：
 
 ```text
 https://0612Leo.github.io/phd-application-tracker/
